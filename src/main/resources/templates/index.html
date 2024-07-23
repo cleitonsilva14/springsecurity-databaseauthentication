@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+</head>
+<body>
+
+<h1>Index Page</h1>
+
+    <div sec:authorize="hasRole('USER')">
+        Text visible to User
+    </div>
+
+    <div sec:authorize="hasRole('ADMIN')">
+        Text visible to Admin
+    </div>
+
+    <p sec:authorize="isAuthenticated()">
+        Text visible only to Authenticated users!
+    </p>
+
+    <div>
+        Username: <p sec:authentication="name"></p>
+    </div>
+
+
+    <div sec:authorize="isAuthenticated()">
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+
+</body>
+</html>
